@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home')->with([
-        'title' => __('home.title'),
-    ]);
-});
+Route::get('/{any}', function () {
+    return view('feedback')
+        ->with([
+            'title' => __('feedback.title')
+        ]);
+})->where('any', '.*');

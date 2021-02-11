@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('feedback/settings', [\App\Http\Controllers\FeedBackSettingsController::class, 'index'])
+    ->name('feedback.settings.index');
+Route::patch('feedback/settings', [\App\Http\Controllers\FeedBackSettingsController::class, 'update'])
+    ->name('feedback.settings.update');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('feedback', [\App\Http\Controllers\FeedBackController::class, 'index'])
+    ->name('feedback');
+Route::post('feedback', [\App\Http\Controllers\FeedBackController::class, 'store'])
+    ->name('feedback.store');
